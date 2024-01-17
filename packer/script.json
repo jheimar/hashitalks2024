@@ -1,0 +1,25 @@
+{
+    "builders": [{
+      "type": "docker",
+      "image": "ubuntu:latest",
+      "commit": true
+    }],
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": [
+          "apt-get update",
+          "apt-get install -y nginx",
+          "apt-get install -y packer",
+          "echo 'daemon off;' >> /etc/nginx/nginx.conf",
+          "echo 'Hello from Packer' > /usr/share/nginx/html/index.html"
+        ]
+      }
+    ],
+    "post-processors": [{
+      "type": "docker-tag",
+      "repository": "mi-imagen-nginx",
+      "tag": "latest"
+    }]
+  }
+  

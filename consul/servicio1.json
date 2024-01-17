@@ -1,0 +1,12 @@
+{
+    "service": {
+      "name": "servicio1",
+      "tags": ["web"],
+      "port": 5054,
+      "check": {
+        "http": "http://192.168.56.1:5054/",
+        "interval": "10s"
+      }
+    }
+  }
+  
